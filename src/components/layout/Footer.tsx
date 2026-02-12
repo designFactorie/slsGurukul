@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import slsLogo from "@/assets/sls.png";
 import { Facebook, Instagram, Youtube, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -27,7 +28,7 @@ export function Footer() {
                     <div className="flex items-center gap-3">
                         <div className="relative w-12 h-12 flex items-center justify-center">
                             <Image
-                                src="/assets/sls.png"
+                                src={slsLogo}
                                 alt="SLS Gurukul Logo"
                                 fill
                                 className="object-contain"

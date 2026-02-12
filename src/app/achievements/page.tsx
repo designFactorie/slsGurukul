@@ -1,5 +1,6 @@
 import { PageHero } from "@/components/layout/PageHero";
 import { StudentShowcase } from "@/components/achievements/StudentShowcase";
+import achievementsHero from "@/assets/achievements_hero.png";
 
 export default function AchievementsPage() {
     return (
@@ -7,7 +8,7 @@ export default function AchievementsPage() {
             <PageHero
                 title={<span><span className="text-primary-purple">Achieve</span>ments</span>}
                 subtitle="Celebrating the milestones and successes of our brilliant students."
-                backgroundImage="/assets/achievements_hero.png"
+                backgroundImage={achievementsHero}
             />
 
             <section className="py-20 px-6 md:px-12 bg-white text-center">

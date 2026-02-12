@@ -1,5 +1,6 @@
 import { PageHero } from "@/components/layout/PageHero";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
+import galleryHero from "@/assets/gallery_hero.png";
 
 export default function GalleryPage() {
     return (
@@ -7,7 +8,7 @@ export default function GalleryPage() {
             <PageHero
                 title={<span>Events <span className="text-primary-purple">Gallery</span></span>}
                 subtitle="Capturing moments of joy, learning, and celebration at SLS Gurukul."
-                backgroundImage="/assets/gallery_hero.png"
+                backgroundImage={galleryHero}
             />
             <GalleryGrid />
         </div>

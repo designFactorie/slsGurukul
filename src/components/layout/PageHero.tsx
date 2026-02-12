@@ -3,11 +3,12 @@
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+import Image, { StaticImageData } from "next/image";
 
 interface PageHeroProps {
     title: React.ReactNode;
     subtitle?: string;
-    backgroundImage: string;
+    backgroundImage: string | StaticImageData;
 }
 
 export function PageHero({ title, subtitle, backgroundImage }: PageHeroProps) {
@@ -15,10 +16,12 @@ export function PageHero({ title, subtitle, backgroundImage }: PageHeroProps) {
         <section className="relative h-[50vh] min-h-[400px] w-full overflow-hidden flex items-center justify-center pt-20">
             {/* Background Image with Parallax effect (simulated) */}
             <div className="absolute inset-0 z-0">
-                <img
+                <Image
                     src={backgroundImage}
                     alt={typeof title === 'string' ? title : 'Page Hero Image'}
-                    className="w-full h-full object-cover scale-110"
+                    fill
+                    className="object-cover scale-110"
+                    priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-brand-gold/80 via-brand-gold/60 to-brand-gold/80" />
             </div>

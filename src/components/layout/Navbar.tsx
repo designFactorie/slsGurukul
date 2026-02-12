@@ -3,6 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import slsLogo from "@/assets/sls.png";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -45,7 +46,7 @@ export function Navbar() {
                 <Link href="/" className="flex items-center gap-3 group">
                     <div className="relative w-20 h-20 group-hover:scale-110 transition-transform">
                         <Image
-                            src="/assets/sls.png"
+                            src={slsLogo}
                             alt="SLS Gurukul Logo"
                             fill
                             className="object-contain"
