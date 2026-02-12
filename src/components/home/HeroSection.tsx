@@ -16,7 +16,7 @@ export function HeroSection() {
                     playsInline
                     className="w-full h-full object-cover"
                 >
-                    <source src="/assets/sls_hero_video.mp4" type="video/mp4" />
+                    <source src="/slsGurukul/assets/sls_hero_video.mp4" type="video/mp4" />
                 </video>
                 <div className="absolute inset-0 bg-gradient-to-b from-brand-gold/60 via-brand-gold/40 to-brand-gold/80" />
             </div>
