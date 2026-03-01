@@ -45,7 +45,7 @@ export default function AdmissionsPage() {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-dark-slate group-hover:text-white transition-colors">Call Us</h4>
-                                    <p className="text-dark-slate/60 group-hover:text-white/80 transition-colors">+91 080 2544 0404</p>
+                                    <p className="text-dark-slate/60 group-hover:text-white/80 transition-colors">+91 9980481450</p>
                                 </div>
                             </div>
                             <div className="flex gap-6 items-center p-6 bg-white rounded-3xl shadow-md border border-gray-50 hover:bg-secondary-red transition-all duration-300 group cursor-pointer">
@@ -54,7 +54,7 @@ export default function AdmissionsPage() {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-dark-slate group-hover:text-white transition-colors">Email Us</h4>
-                                    <p className="text-dark-slate/60 group-hover:text-white/80 transition-colors">admissions@slsgurukul.com</p>
+                                    <p className="text-dark-slate/60 group-hover:text-white/80 transition-colors">Info@slsinternationalgurukul.org</p>
                                 </div>
                             </div>
                             <div className="flex gap-6 items-center p-6 bg-white rounded-3xl shadow-md border border-gray-100 hover:bg-brand-gold transition-all duration-300 group cursor-pointer">

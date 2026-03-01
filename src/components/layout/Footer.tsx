@@ -15,8 +15,8 @@ const quickLinks = [
 
 const contactInfo = [
     { icon: MapPin, text: "Horamavu, Bangalore, India" },
-    { icon: Phone, text: "+91 80 1234 5678", href: "tel:+918012345678" },
-    { icon: Mail, text: "info@slsgurukul.com", href: "mailto:info@slsgurukul.com" },
+    { icon: Phone, text: "+91 9980481450", href: "tel:+919980481450" },
+    { icon: Mail, text: "Info@slsinternationalgurukul.org", href: "mailto:Info@slsinternationalgurukul.org" },
 ];
 
 export function Footer() {
