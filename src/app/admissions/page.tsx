@@ -29,10 +29,16 @@ export default function AdmissionsPage() {
                 return;
             }
 
-            const response = await fetch(scriptUrl, {
+            const params = new URLSearchParams();
+            params.append("parentName", formData.parentName);
+            params.append("email", formData.email);
+            params.append("phone", formData.phone);
+            params.append("grade", formData.grade);
+
+            await fetch(scriptUrl, {
                 method: "POST",
-                mode: "no-cors", // Required for Google Apps Script
-                body: JSON.stringify(formData),
+                mode: "no-cors",
+                body: params,
             });
 
             // In no-cors mode, we can't reliably read the response status.
