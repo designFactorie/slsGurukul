@@ -77,13 +77,15 @@ export function Navbar() {
                             {item.name}
                         </Link>
                     ))}
-                    <Button
-                        variant={isScrolled ? "primary" : "secondary"}
-                        size="sm"
-                        className="ml-4 text-base hover:!bg-[#FBB900] hover:!text-dark-slate hover:!border-[#FBB900] shadow-lg transition-all duration-300 transform hover:scale-105"
-                    >
-                        Admissions Open
-                    </Button>
+                    <Link href="/admissions#enquiry-form">
+                        <Button
+                            variant={isScrolled ? "primary" : "secondary"}
+                            size="sm"
+                            className="ml-4 text-base hover:!bg-[#FBB900] hover:!text-dark-slate hover:!border-[#FBB900] shadow-lg transition-all duration-300 transform hover:scale-105"
+                        >
+                            Admissions Open
+                        </Button>
+                    </Link>
                 </div>
 
                 {/* Mobile Toggle */}
@@ -121,9 +123,11 @@ export function Navbar() {
                                     {item.name}
                                 </Link>
                             ))}
-                            <Button variant="primary" className="mt-4 w-full">
-                                Admissions Open
-                            </Button>
+                            <Link href="/admissions#enquiry-form" className="w-full">
+                                <Button variant="primary" className="mt-4 w-full" onClick={() => setIsMobileMenuOpen(false)}>
+                                    Admissions Open
+                                </Button>
+                            </Link>
                         </div>
                     </motion.div>
                 )}

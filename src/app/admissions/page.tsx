@@ -1,9 +1,51 @@
+"use client";
+
 import { PageHero } from "@/components/layout/PageHero";
 import { AdmissionProcess } from "@/components/admissions/AdmissionProcess";
 import { Button } from "@/components/ui/Button";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Loader2, CheckCircle2 } from "lucide-react";
+import { useState } from "react";
 
 export default function AdmissionsPage() {
+    const [formData, setFormData] = useState({
+        parentName: "",
+        email: "",
+        phone: "",
+        grade: "",
+    });
+    const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setStatus("submitting");
+
+        try {
+            const scriptUrl = process.env.NEXT_PUBLIC_ENQUIRY_SCRIPT_URL;
+            if (!scriptUrl) {
+                console.warn("Google Apps Script URL not found in environment variables.");
+                // For demo/development purposes if not configured
+                await new Promise((resolve) => setTimeout(resolve, 1500));
+                setStatus("success");
+                return;
+            }
+
+            const response = await fetch(scriptUrl, {
+                method: "POST",
+                mode: "no-cors", // Required for Google Apps Script
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+
+            setStatus("success");
+            setFormData({ parentName: "", email: "", phone: "", grade: "" });
+        } catch (error) {
+            console.error("Form submission error:", error);
+            setStatus("error");
+        }
+    };
+
     return (
         <div className="flex flex-col w-full">
             <PageHero
@@ -69,39 +111,106 @@ export default function AdmissionsPage() {
                         </div>
                     </div>
 
-                    <div className="bg-white p-10 md:p-16 rounded-[4rem] shadow-2xl border border-gray-100 relative overflow-hidden">
+                    <div id="enquiry-form" className="bg-white p-10 md:p-16 rounded-[4rem] shadow-2xl border border-gray-100 relative overflow-hidden scroll-mt-32">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-primary-purple/5 rounded-bl-full" />
                         <div className="relative z-10 space-y-8">
                             <h3 className="font-serif text-3xl font-bold text-dark-slate">Admission Enquiry</h3>
-                            <form className="space-y-6">
-                                <div className="space-y-2">
-                                    <label className="text-sm font-bold text-dark-slate/60 uppercase tracking-widest pl-2">Parent Name</label>
-                                    <input type="text" className="w-full px-6 py-4 bg-off-white rounded-2xl border border-transparent focus:border-primary-purple outline-none transition-all" placeholder="Enter your full name" />
-                                </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div className="space-y-2">
-                                        <label className="text-sm font-bold text-dark-slate/60 uppercase tracking-widest pl-2">Email Address</label>
-                                        <input type="email" className="w-full px-6 py-4 bg-off-white rounded-2xl border border-transparent focus:border-primary-purple outline-none transition-all" placeholder="your@email.com" />
+                            {status === "success" ? (
+                                <div className="flex flex-col items-center justify-center py-12 space-y-4 text-center">
+                                    <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
+                                        <CheckCircle2 size={40} />
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-sm font-bold text-dark-slate/60 uppercase tracking-widest pl-2">Phone Number</label>
-                                        <input type="tel" className="w-full px-6 py-4 bg-off-white rounded-2xl border border-transparent focus:border-primary-purple outline-none transition-all" placeholder="+91 XXXXX XXXXX" />
+                                        <h4 className="text-2xl font-bold text-dark-slate">Enquiry Submitted!</h4>
+                                        <p className="text-dark-slate/60">Thank you for your interest. Our team will contact you soon.</p>
                                     </div>
+                                    <Button
+                                        variant="outline"
+                                        onClick={() => setStatus("idle")}
+                                        className="mt-6"
+                                    >
+                                        Send Another Enquiry
+                                    </Button>
                                 </div>
-                                <div className="space-y-2">
-                                    <label className="text-sm font-bold text-dark-slate/60 uppercase tracking-widest pl-2">Grade Applying For</label>
-                                    <select className="w-full px-6 py-4 bg-off-white rounded-2xl border border-transparent focus:border-primary-purple outline-none transition-all appearance-none cursor-pointer">
-                                        <option>Select Grade</option>
-                                        <option>Balavatika</option>
-                                        <option>Grade 1 - 5</option>
-                                        <option>Grade 6 - 8</option>
-                                        <option>Grade 9 - 10</option>
-                                    </select>
-                                </div>
-                                <Button variant="primary" className="w-full py-5 text-lg">
-                                    Submit Enquiry
-                                </Button>
-                            </form>
+                            ) : (
+                                <form onSubmit={handleSubmit} className="space-y-6">
+                                    <div className="space-y-2">
+                                        <label className="text-sm font-bold text-dark-slate/60 uppercase tracking-widest pl-2">Parent Name</label>
+                                        <input
+                                            required
+                                            type="text"
+                                            className="w-full px-6 py-4 bg-off-white rounded-2xl border border-transparent focus:border-primary-purple outline-none transition-all"
+                                            placeholder="Enter your full name"
+                                            value={formData.parentName}
+                                            onChange={(e) => setFormData({ ...formData, parentName: e.target.value })}
+                                        />
+                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div className="space-y-2">
+                                            <label className="text-sm font-bold text-dark-slate/60 uppercase tracking-widest pl-2">Email Address</label>
+                                            <input
+                                                required
+                                                type="email"
+                                                className="w-full px-6 py-4 bg-off-white rounded-2xl border border-transparent focus:border-primary-purple outline-none transition-all"
+                                                placeholder="your@email.com"
+                                                value={formData.email}
+                                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                            />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <label className="text-sm font-bold text-dark-slate/60 uppercase tracking-widest pl-2">Phone Number</label>
+                                            <input
+                                                required
+                                                type="tel"
+                                                className="w-full px-6 py-4 bg-off-white rounded-2xl border border-transparent focus:border-primary-purple outline-none transition-all"
+                                                placeholder="+91 XXXXX XXXXX"
+                                                value={formData.phone}
+                                                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="space-y-2">
+                                        <label className="text-sm font-bold text-dark-slate/60 uppercase tracking-widest pl-2">Grade Applying For</label>
+                                        <div className="relative">
+                                            <select
+                                                required
+                                                className="w-full px-6 py-4 bg-off-white rounded-2xl border border-transparent focus:border-primary-purple outline-none transition-all appearance-none cursor-pointer"
+                                                value={formData.grade}
+                                                onChange={(e) => setFormData({ ...formData, grade: e.target.value })}
+                                            >
+                                                <option value="">Select Grade</option>
+                                                <option value="Balavatika">Balavatika</option>
+                                                <option value="Grade 1 - 5">Grade 1 - 5</option>
+                                                <option value="Grade 6 - 8">Grade 6 - 8</option>
+                                                <option value="Grade 9 - 10">Grade 9 - 10</option>
+                                            </select>
+                                            <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-dark-slate/40">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {status === "error" && (
+                                        <p className="text-red-500 text-sm pl-2 font-medium">Something went wrong. Please try again later.</p>
+                                    )}
+
+                                    <Button
+                                        disabled={status === "submitting"}
+                                        type="submit"
+                                        variant="primary"
+                                        className="w-full py-5 text-lg"
+                                    >
+                                        {status === "submitting" ? (
+                                            <>
+                                                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                                                Submitting...
+                                            </>
+                                        ) : (
+                                            "Submit Enquiry"
+                                        )}
+                                    </Button>
+                                </form>
+                            )}
                         </div>
                     </div>
                 </div>
