@@ -41,6 +41,8 @@ export default function AdmissionsPage() {
                 body: params,
             });
 
+            // In no-cors mode, we can't reliably read the response status.
+            // But if the fetch itself didn't throw, we assume the request was sent.
             setStatus("success");
             setFormData({ parentName: "", email: "", phone: "", grade: "" });
         } catch (error) {
