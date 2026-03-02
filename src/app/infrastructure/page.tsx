@@ -1,5 +1,6 @@
 import { PageHero } from "@/components/layout/PageHero";
 import { FacilitiesGrid } from "@/components/infrastructure/FacilitiesGrid";
+import Link from "next/link";
 
 export default function InfrastructurePage() {
     return (
@@ -22,9 +23,11 @@ export default function InfrastructurePage() {
                         one of the premier educational institutions in Bangalore.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <button className="bg-primary-purple text-white px-8 py-4 rounded-full font-bold hover:bg-primary-purple/90 transition-all shadow-lg active:scale-95">
-                            Book a Campus Tour
-                        </button>
+                        <Link href="/admissions#enquiry-form">
+                            <button className="bg-primary-purple text-white px-8 py-4 rounded-full font-bold hover:bg-primary-purple/90 transition-all shadow-lg active:scale-95">
+                                Book a Campus Tour
+                            </button>
+                        </Link>
                         <button className="border-2 border-primary-purple text-primary-purple px-8 py-4 rounded-full font-bold hover:bg-primary-purple hover:text-white transition-all active:scale-95">
                             Download Prospectus
                         </button>

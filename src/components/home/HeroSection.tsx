@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import Link from "next/link";
 
 export function HeroSection() {
     return (
@@ -53,9 +54,11 @@ export function HeroSection() {
                         Explore Our Vision
                         <ChevronDown className="ml-2 group-hover:translate-y-1 transition-transform" />
                     </Button>
-                    <Button variant="outline" size="lg" className="border-dark-slate text-dark-slate hover:bg-dark-slate hover:text-white">
-                        Begin Your Journey
-                    </Button>
+                    <Link href="/admissions#enquiry-form">
+                        <Button variant="outline" size="lg" className="border-dark-slate text-dark-slate hover:bg-dark-slate hover:text-white">
+                            Begin Your Journey
+                        </Button>
+                    </Link>
                 </motion.div>
             </div>
 
