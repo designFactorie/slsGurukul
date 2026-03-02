@@ -32,12 +32,11 @@ export default function AdmissionsPage() {
             const response = await fetch(scriptUrl, {
                 method: "POST",
                 mode: "no-cors", // Required for Google Apps Script
-                headers: {
-                    "Content-Type": "application/json",
-                },
                 body: JSON.stringify(formData),
             });
 
+            // In no-cors mode, we can't reliably read the response status.
+            // But if the fetch itself didn't throw, we assume the request was sent.
             setStatus("success");
             setFormData({ parentName: "", email: "", phone: "", grade: "" });
         } catch (error) {
