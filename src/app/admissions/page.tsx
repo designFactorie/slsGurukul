@@ -144,7 +144,7 @@ export default function AdmissionsPage() {
                                         <input
                                             required
                                             type="text"
-                                            className="w-full px-6 py-4 bg-off-white rounded-2xl border border-transparent focus:border-primary-purple outline-none transition-all"
+                                            className="w-full px-6 py-4 bg-off-white rounded-2xl border border-transparent focus:border-primary-purple outline-none transition-all text-dark-slate"
                                             placeholder="Enter your full name"
                                             value={formData.parentName}
                                             onChange={(e) => setFormData({ ...formData, parentName: e.target.value })}
@@ -156,7 +156,7 @@ export default function AdmissionsPage() {
                                             <input
                                                 required
                                                 type="email"
-                                                className="w-full px-6 py-4 bg-off-white rounded-2xl border border-transparent focus:border-primary-purple outline-none transition-all"
+                                                className="w-full px-6 py-4 bg-off-white rounded-2xl border border-transparent focus:border-primary-purple outline-none transition-all text-dark-slate"
                                                 placeholder="your@email.com"
                                                 value={formData.email}
                                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -167,7 +167,7 @@ export default function AdmissionsPage() {
                                             <input
                                                 required
                                                 type="tel"
-                                                className="w-full px-6 py-4 bg-off-white rounded-2xl border border-transparent focus:border-primary-purple outline-none transition-all"
+                                                className="w-full px-6 py-4 bg-off-white rounded-2xl border border-transparent focus:border-primary-purple outline-none transition-all text-dark-slate"
                                                 placeholder="+91 XXXXX XXXXX"
                                                 value={formData.phone}
                                                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -179,7 +179,7 @@ export default function AdmissionsPage() {
                                         <div className="relative">
                                             <select
                                                 required
-                                                className="w-full px-6 py-4 bg-off-white rounded-2xl border border-transparent focus:border-primary-purple outline-none transition-all appearance-none cursor-pointer"
+                                                className="w-full px-6 py-4 bg-off-white rounded-2xl border border-transparent focus:border-primary-purple outline-none transition-all appearance-none cursor-pointer text-dark-slate"
                                                 value={formData.grade}
                                                 onChange={(e) => setFormData({ ...formData, grade: e.target.value })}
                                             >
