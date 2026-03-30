@@ -7,14 +7,14 @@ import { cn } from "@/lib/utils";
 
 const students = {
     "2023-24": [
-        { name: "Aditi Sharma", rank: 1, percentage: "98.5%", class: "Grade X", image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Aditi" },
-        { name: "Rahul Verma", rank: 2, percentage: "97.2%", class: "Grade X", image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Rahul" },
-        { name: "Sanya Gupta", rank: 3, percentage: "96.8%", class: "Grade X", image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sanya" },
-        { name: "Aryan Raj", rank: 4, percentage: "95.5%", class: "Grade X", image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Aryan" },
-        { name: "Meera Nair", rank: 5, percentage: "94.8%", class: "Grade X", image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Meera" },
-        { name: "Karthik S", rank: 6, percentage: "94.2%", class: "Grade X", image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Karthik" },
-        { name: "Ananya P", rank: 7, percentage: "93.5%", class: "Grade X", image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Ananya" },
-        { name: "Vikram R", rank: 8, percentage: "93.0%", class: "Grade X", image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Vikram" },
+        { name: "Aditi Sharma", rank: 1, percentage: "98.5%", class: "Grade X", image: "/assets/avatars/student_aditi.png" },
+        { name: "Rahul Verma", rank: 2, percentage: "97.2%", class: "Grade X", image: "/assets/avatars/student_rahul.png" },
+        { name: "Sanya Gupta", rank: 3, percentage: "96.8%", class: "Grade X", image: "/assets/avatars/student_sanya.png" },
+        { name: "Aryan Raj", rank: 4, percentage: "95.5%", class: "Grade X", image: "/assets/avatars/student_aryan.png" },
+        { name: "Meera Nair", rank: 5, percentage: "94.8%", class: "Grade X", image: "/assets/avatars/student_meera.png" },
+        { name: "Karthik S", rank: 6, percentage: "94.2%", class: "Grade X", image: "/assets/avatars/student_karthik.png" },
+        { name: "Ananya P", rank: 7, percentage: "93.5%", class: "Grade X", image: "/assets/avatars/student_ananya.png" },
+        { name: "Vikram R", rank: 8, percentage: "93.0%", class: "Grade X", image: "/assets/avatars/student_vikram.png" },
     ],
 };
 

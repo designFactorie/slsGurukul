@@ -8,7 +8,7 @@ export default function InfrastructurePage() {
             <PageHero
                 title={<span><span className="text-primary-purple">Infra</span>structure</span>}
                 subtitle="World-class facilities designed to nurture every aspect of your child's growth."
-                backgroundImage="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=2000"
+                backgroundImage="/assets/infra-home1.png"
             />
             <FacilitiesGrid />
 

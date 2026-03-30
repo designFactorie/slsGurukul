@@ -86,8 +86,8 @@ export function AboutUs() {
 
                         <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
                             <img
-                                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=1000"
-                                alt="Ancient Gurukul Setting"
+                                src="/assets/gurukul.jpg"
+                                alt="Gurukul Building"
                                 className="w-full h-full object-cover aspect-square hover:scale-105 transition-transform duration-700"
                             />
                         </div>
