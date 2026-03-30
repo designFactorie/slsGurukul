@@ -15,10 +15,10 @@ const facilities = [
         title: "Well-Equipped Classrooms",
         icon: Sofa,
         description: "Spacious, well-lit classrooms with modern learning aids, smart boards, and comfortable seating to facilitate effective learning.",
-        image: "/assets/classroom/DSC04174.JPG",
+        image: "/assets/classroom/DSC04174.jpg",
         gallery: [
-            "/assets/classroom/DSC04174.JPG",
-            "/assets/classroom/DSC04182.JPG",
+            "/assets/classroom/DSC04174.jpg",
+            "/assets/classroom/DSC04182.jpg",
         ]
     },
     {
@@ -28,43 +28,43 @@ const facilities = [
         image: "/assets/Lab/computerlab.png",
         gallery: [
             "/assets/Lab/computerlab.png",
-            "/assets/Lab/DSC05039.JPG",
-            "/assets/Lab/DSC05071.JPG",
-            "/assets/Lab/DSC05013.JPG",
-            "/assets/Lab/DSC05061.JPG",
-            "/assets/Lab/DSC05097.JPG"
+            "/assets/Lab/DSC05039.jpg",
+            "/assets/Lab/DSC05071.jpg",
+            "/assets/Lab/DSC05013.jpg",
+            "/assets/Lab/DSC05061.jpg",
+            "/assets/Lab/DSC05097.jpg"
         ]
     },
     {
         title: "Library",
         icon: Library,
         description: "A treasure trove of books, journals, and digital resources encouraging reading habits and research skills.",
-        image: "/assets/Library/DSC04979.JPG",
+        image: "/assets/Library/DSC04979.jpg",
         gallery: [
-            "/assets/Library/DSC04979.JPG",
-            "/assets/Library/DSC04983.JPG",
-            "/assets/Library/DSC04987.JPG"
+            "/assets/Library/DSC04979.jpg",
+            "/assets/Library/DSC04983.jpg",
+            "/assets/Library/DSC04987.jpg"
         ]
     },
     {
         title: "Sports Facilities",
         icon: Trophy,
         description: "Expansive playgrounds, indoor sports areas, and equipment for cricket, football, basketball, athletics, and more.",
-        image: "/assets/Sports/DSC04955.JPG",
+        image: "/assets/Sports/DSC04955.jpg",
         gallery: [
-            "/assets/Sports/DSC04955.JPG",
-            "/assets/Sports/DSC04963.JPG",
-            "/assets/Sports/DSC04969.JPG"
+            "/assets/Sports/DSC04955.jpg",
+            "/assets/Sports/DSC04963.jpg",
+            "/assets/Sports/DSC04969.jpg"
         ]
     },
     {
         title: "Arts and Music",
         icon: Music,
         description: "Dedicated spaces for visual arts, performing arts, music, and dance to nurture creative expression.",
-        image: "/assets/music/DSC04171.JPG",
+        image: "/assets/music/DSC04171.jpg",
         gallery: [
-            "/assets/music/DSC04171.JPG",
-            "/assets/music/DSC05103.JPG"
+            "/assets/music/DSC04171.jpg",
+            "/assets/music/DSC05103.jpg"
         ]
     },
     {
