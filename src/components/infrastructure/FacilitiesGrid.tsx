@@ -175,18 +175,18 @@ export function FacilitiesGrid() {
                             initial={{ opacity: 0, scale: 0.9, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                            className="relative w-full max-w-6xl aspect-video bg-black rounded-[3rem] overflow-hidden shadow-2xl flex flex-col"
+                            className="relative w-full max-w-6xl h-[70vh] md:aspect-video bg-black rounded-3xl md:rounded-[3rem] overflow-hidden shadow-2xl flex flex-col"
                             onClick={(e) => e.stopPropagation()}
                         >
                             {/* Close Button */}
                             <button
                                 onClick={closeGallery}
-                                className="absolute top-6 right-6 z-[110] p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white transition-all shadow-lg hover:rotate-90"
+                                className="absolute top-4 right-4 md:top-6 md:right-6 z-[110] p-2 md:p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white transition-all shadow-lg hover:rotate-90"
                             >
-                                <X size={28} />
+                                <X size={24} className="md:w-7 md:h-7" />
                             </button>
 
-                            <div className="relative w-full h-full group/modal">
+                            <div className="relative w-full h-full group/modal flex items-center justify-center">
                                 {/* Slideshow functionality */}
                                 {selectedFacility.gallery && selectedFacility.gallery.length > 0 ? (
                                     <>
@@ -206,39 +206,39 @@ export function FacilitiesGrid() {
                                         {/* Navigation Arrows */}
                                         <button
                                             onClick={prevImage}
-                                            className="absolute left-6 top-1/2 -translate-y-1/2 p-4 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white transition-all opacity-0 group-hover/modal:opacity-100"
+                                            className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 p-3 md:p-4 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white transition-all opacity-100 md:opacity-0 md:group-hover/modal:opacity-100"
                                         >
-                                            <ChevronLeft size={32} />
+                                            <ChevronLeft size={24} className="md:w-8 md:h-8" />
                                         </button>
                                         <button
                                             onClick={nextImage}
-                                            className="absolute right-6 top-1/2 -translate-y-1/2 p-4 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white transition-all opacity-0 group-hover/modal:opacity-100"
+                                            className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 p-3 md:p-4 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white transition-all opacity-100 md:opacity-0 md:group-hover/modal:opacity-100"
                                         >
-                                            <ChevronRight size={32} />
+                                            <ChevronRight size={24} className="md:w-8 md:h-8" />
                                         </button>
 
                                         {/* Indicators */}
-                                        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+                                        <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex gap-2 md:gap-3 z-10">
                                             {selectedFacility.gallery.map((_, i) => (
                                                 <button
                                                     key={i}
                                                     onClick={(e) => { e.stopPropagation(); setCurrentImageIndex(i); }}
                                                     className={cn(
-                                                        "h-2 rounded-full transition-all duration-300",
-                                                        currentImageIndex === i ? "w-8 bg-brand-gold" : "w-2 bg-white/30"
+                                                        "h-1.5 md:h-2 rounded-full transition-all duration-300",
+                                                        currentImageIndex === i ? "w-6 md:w-8 bg-brand-gold" : "w-1.5 md:w-2 bg-white/30"
                                                     )}
                                                 />
                                             ))}
                                         </div>
                                     </>
                                 ) : (
-                                    <div className="w-full h-full flex flex-col items-center justify-center text-white p-10 space-y-6">
-                                        <selectedFacility.icon size={80} className="text-brand-gold opacity-50" />
-                                        <h2 className="font-serif text-4xl md:text-5xl font-bold">{selectedFacility.title}</h2>
-                                        <p className="text-xl text-white/70 max-w-2xl text-center leading-relaxed">
+                                    <div className="w-full h-full flex flex-col items-center justify-center text-white p-6 md:p-10 space-y-4 md:space-y-6">
+                                        <selectedFacility.icon size={48} className="md:w-20 md:h-20 text-brand-gold opacity-50" />
+                                        <h2 className="font-serif text-2xl md:text-5xl font-bold text-center">{selectedFacility.title}</h2>
+                                        <p className="text-sm md:text-xl text-white/70 max-w-2xl text-center leading-relaxed">
                                             {selectedFacility.description}
                                         </p>
-                                        <div className="bg-brand-gold/10 border border-brand-gold/20 px-6 py-3 rounded-full text-brand-gold font-medium">
+                                        <div className="bg-brand-gold/10 border border-brand-gold/20 px-4 py-2 md:px-6 md:py-3 rounded-full text-brand-gold text-xs md:text-base font-medium">
                                             Gallery Images Coming Soon
                                         </div>
                                     </div>
@@ -246,14 +246,14 @@ export function FacilitiesGrid() {
 
                                 {/* Floating Title (for gallery view) */}
                                 {selectedFacility.gallery && selectedFacility.gallery.length > 0 && (
-                                    <div className="absolute top-8 left-10 pointer-events-none">
-                                        <div className="flex items-center gap-4 bg-black/40 backdrop-blur-md p-4 rounded-2xl border border-white/10">
-                                            <div className="w-10 h-10 bg-primary-purple rounded-xl flex items-center justify-center text-white">
-                                                <selectedFacility.icon size={20} />
+                                    <div className="absolute top-4 left-4 md:top-8 md:left-10 pointer-events-none">
+                                        <div className="flex items-center gap-3 md:gap-4 bg-black/60 backdrop-blur-md p-3 md:p-4 rounded-xl md:rounded-2xl border border-white/10 max-w-[calc(100vw-100px)]">
+                                            <div className="w-8 h-8 md:w-10 md:h-10 bg-primary-purple rounded-lg md:rounded-xl flex items-center justify-center text-white shrink-0">
+                                                <selectedFacility.icon size={16} className="md:w-5 md:h-5" />
                                             </div>
-                                            <div>
-                                                <h2 className="font-serif text-lg font-bold text-white">{selectedFacility.title}</h2>
-                                                <p className="text-white/50 text-xs">Viewing {currentImageIndex + 1} of {selectedFacility.gallery.length}</p>
+                                            <div className="min-w-0">
+                                                <h2 className="font-serif text-sm md:text-lg font-bold text-white truncate">{selectedFacility.title}</h2>
+                                                <p className="text-white/50 text-[10px] md:text-xs">Viewing {currentImageIndex + 1} of {selectedFacility.gallery.length}</p>
                                             </div>
                                         </div>
                                     </div>
