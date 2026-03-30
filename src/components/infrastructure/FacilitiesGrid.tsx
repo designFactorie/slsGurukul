@@ -3,7 +3,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import {
     X, Search, Sofa, Laptop, Library,
-    Trophy, Music, ShieldCheck, Bus, Tablet
+    Trophy, Music, ShieldCheck, Bus, Tablet,
+    ChevronLeft, ChevronRight
 } from "lucide-react";
 import * as React from "react";
 import { cn } from "@/lib/utils";
@@ -14,31 +15,57 @@ const facilities = [
         title: "Well-Equipped Classrooms",
         icon: Sofa,
         description: "Spacious, well-lit classrooms with modern learning aids, smart boards, and comfortable seating to facilitate effective learning.",
-        image: "https://images.unsplash.com/photo-1577891729319-f4874c73a5ae?auto=format&fit=crop&q=80&w=800",
+        image: "/assets/classroom/DSC04174.JPG",
+        gallery: [
+            "/assets/classroom/DSC04174.JPG",
+            "/assets/classroom/DSC04182.JPG",
+        ]
     },
     {
         title: "Science and Computer Labs",
         icon: Laptop,
         description: "State-of-the-art laboratories equipped with latest instruments and technology for hands-on experimentation and digital literacy.",
-        image: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=800",
+        image: "/assets/Lab/computerlab.png",
+        gallery: [
+            "/assets/Lab/computerlab.png",
+            "/assets/Lab/DSC05039.JPG",
+            "/assets/Lab/DSC05071.JPG",
+            "/assets/Lab/DSC05013.JPG",
+            "/assets/Lab/DSC05061.JPG",
+            "/assets/Lab/DSC05097.JPG"
+        ]
     },
     {
         title: "Library",
         icon: Library,
         description: "A treasure trove of books, journals, and digital resources encouraging reading habits and research skills.",
-        image: "https://images.unsplash.com/photo-1521587760476-6c1d70a3045d?auto=format&fit=crop&q=80&w=800",
+        image: "/assets/Library/DSC04979.JPG",
+        gallery: [
+            "/assets/Library/DSC04979.JPG",
+            "/assets/Library/DSC04983.JPG",
+            "/assets/Library/DSC04987.JPG"
+        ]
     },
     {
         title: "Sports Facilities",
         icon: Trophy,
         description: "Expansive playgrounds, indoor sports areas, and equipment for cricket, football, basketball, athletics, and more.",
-        image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&q=80&w=800",
+        image: "/assets/Sports/DSC04955.JPG",
+        gallery: [
+            "/assets/Sports/DSC04955.JPG",
+            "/assets/Sports/DSC04963.JPG",
+            "/assets/Sports/DSC04969.JPG"
+        ]
     },
     {
         title: "Arts and Music",
         icon: Music,
         description: "Dedicated spaces for visual arts, performing arts, music, and dance to nurture creative expression.",
-        image: "https://images.unsplash.com/photo-1514525253361-bee87184747c?auto=format&fit=crop&q=80&w=800",
+        image: "/assets/music/DSC04171.JPG",
+        gallery: [
+            "/assets/music/DSC04171.JPG",
+            "/assets/music/DSC05103.JPG"
+        ]
     },
     {
         title: "Health and Safety",
@@ -62,6 +89,28 @@ const facilities = [
 
 export function FacilitiesGrid() {
     const [selectedFacility, setSelectedFacility] = React.useState<typeof facilities[0] | null>(null);
+    const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+
+    const nextImage = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        if (selectedFacility?.gallery) {
+            setCurrentImageIndex((prev) => (prev + 1) % selectedFacility.gallery!.length);
+        }
+    };
+
+    const prevImage = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        if (selectedFacility?.gallery) {
+            setCurrentImageIndex((prev) =>
+                (prev - 1 + selectedFacility.gallery!.length) % selectedFacility.gallery!.length
+            );
+        }
+    };
+
+    const closeGallery = () => {
+        setSelectedFacility(null);
+        setCurrentImageIndex(0);
+    };
 
     return (
         <section className="py-24 px-6 md:px-12 bg-white">
@@ -114,60 +163,101 @@ export function FacilitiesGrid() {
             {/* Gallery Modal */}
             <AnimatePresence>
                 {selectedFacility && (
-                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-dark-slate/90 backdrop-blur-md">
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-dark-slate/95 backdrop-blur-xl">
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            onClick={() => setSelectedFacility(null)}
+                            onClick={closeGallery}
                             className="absolute inset-0"
                         />
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                            className="relative w-full max-w-5xl bg-white rounded-[3rem] overflow-hidden shadow-2xl flex flex-col"
+                            className="relative w-full max-w-6xl aspect-video bg-black rounded-[3rem] overflow-hidden shadow-2xl flex flex-col"
+                            onClick={(e) => e.stopPropagation()}
                         >
+                            {/* Close Button */}
                             <button
-                                onClick={() => setSelectedFacility(null)}
-                                className="absolute top-6 right-6 z-10 p-3 bg-white/20 hover:bg-white/40 backdrop-blur-md rounded-full text-white transition-all shadow-lg hover:rotate-90"
+                                onClick={closeGallery}
+                                className="absolute top-6 right-6 z-[110] p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white transition-all shadow-lg hover:rotate-90"
                             >
                                 <X size={28} />
                             </button>
 
-                            <div className="grid grid-cols-1 lg:grid-cols-2 h-auto lg:h-[600px]">
-                                <div className="relative h-[300px] lg:h-full">
-                                    <img
-                                        src={selectedFacility.image}
-                                        alt={selectedFacility.title}
-                                        className="w-full h-full object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-dark-slate/80 to-transparent flex items-end p-10">
-                                        <div className="flex items-center gap-4">
-                                            <div className="w-12 h-12 bg-primary-purple rounded-xl flex items-center justify-center text-white">
-                                                <selectedFacility.icon size={24} />
-                                            </div>
-                                            <h2 className="font-serif text-3xl font-bold text-white">{selectedFacility.title}</h2>
+                            <div className="relative w-full h-full group/modal">
+                                {/* Slideshow functionality */}
+                                {selectedFacility.gallery && selectedFacility.gallery.length > 0 ? (
+                                    <>
+                                        <AnimatePresence mode="wait">
+                                            <motion.img
+                                                key={currentImageIndex}
+                                                src={selectedFacility.gallery[currentImageIndex]}
+                                                alt={`${selectedFacility.title} gallery ${currentImageIndex + 1}`}
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                exit={{ opacity: 0 }}
+                                                transition={{ duration: 0.5 }}
+                                                className="w-full h-full object-contain"
+                                            />
+                                        </AnimatePresence>
+
+                                        {/* Navigation Arrows */}
+                                        <button
+                                            onClick={prevImage}
+                                            className="absolute left-6 top-1/2 -translate-y-1/2 p-4 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white transition-all opacity-0 group-hover/modal:opacity-100"
+                                        >
+                                            <ChevronLeft size={32} />
+                                        </button>
+                                        <button
+                                            onClick={nextImage}
+                                            className="absolute right-6 top-1/2 -translate-y-1/2 p-4 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white transition-all opacity-0 group-hover/modal:opacity-100"
+                                        >
+                                            <ChevronRight size={32} />
+                                        </button>
+
+                                        {/* Indicators */}
+                                        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+                                            {selectedFacility.gallery.map((_, i) => (
+                                                <button
+                                                    key={i}
+                                                    onClick={(e) => { e.stopPropagation(); setCurrentImageIndex(i); }}
+                                                    className={cn(
+                                                        "h-2 rounded-full transition-all duration-300",
+                                                        currentImageIndex === i ? "w-8 bg-brand-gold" : "w-2 bg-white/30"
+                                                    )}
+                                                />
+                                            ))}
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div className="w-full h-full flex flex-col items-center justify-center text-white p-10 space-y-6">
+                                        <selectedFacility.icon size={80} className="text-brand-gold opacity-50" />
+                                        <h2 className="font-serif text-4xl md:text-5xl font-bold">{selectedFacility.title}</h2>
+                                        <p className="text-xl text-white/70 max-w-2xl text-center leading-relaxed">
+                                            {selectedFacility.description}
+                                        </p>
+                                        <div className="bg-brand-gold/10 border border-brand-gold/20 px-6 py-3 rounded-full text-brand-gold font-medium">
+                                            Gallery Images Coming Soon
                                         </div>
                                     </div>
-                                </div>
-                                <div className="p-10 md:p-16 flex flex-col justify-center space-y-6">
-                                    <h4 className="text-secondary-red font-bold tracking-widest uppercase text-sm">Detailed Overview</h4>
-                                    <p className="text-dark-slate/70 text-lg leading-relaxed">
-                                        Our {selectedFacility.title.toLowerCase()} are designed to provide the best possible environment for student development.
-                                        Equipped with modern technology and maintained to the highest standards, we ensure that every child has access
-                                        to resources they need to excel.
-                                    </p>
-                                    <div className="space-y-4">
-                                        <div className="h-1 w-20 bg-brand-gold rounded-full" />
-                                        <p className="text-dark-slate font-medium italic">
-                                            "World-class facilities that nurture world-class minds."
-                                        </p>
+                                )}
+
+                                {/* Floating Title (for gallery view) */}
+                                {selectedFacility.gallery && selectedFacility.gallery.length > 0 && (
+                                    <div className="absolute top-8 left-10 pointer-events-none">
+                                        <div className="flex items-center gap-4 bg-black/40 backdrop-blur-md p-4 rounded-2xl border border-white/10">
+                                            <div className="w-10 h-10 bg-primary-purple rounded-xl flex items-center justify-center text-white">
+                                                <selectedFacility.icon size={20} />
+                                            </div>
+                                            <div>
+                                                <h2 className="font-serif text-lg font-bold text-white">{selectedFacility.title}</h2>
+                                                <p className="text-white/50 text-xs">Viewing {currentImageIndex + 1} of {selectedFacility.gallery.length}</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <Button variant="primary" className="w-fit">
-                                        Schedule a Visit
-                                    </Button>
-                                </div>
+                                )}
                             </div>
                         </motion.div>
                     </div>

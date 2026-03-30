@@ -10,31 +10,37 @@ const testimonials = [
         name: "Jayanthi",
         rating: 5,
         text: "I am happy to see my son growing to be a respectful and disciplined child. Thanks to SLS for inculcating the moral values.",
+        image: "/assets/avatars/parent_jayanthi.png"
     },
     {
         name: "Shalini",
         rating: 5,
         text: "I truly appreciate the management's vision of blending modern education with our rich Indian culture. My child enjoys the events and celebrations and has gained wonderful knowledge of our traditions and heritage.",
+        image: "/assets/avatars/parent_shalini.png"
     },
     {
         name: "Raghuram",
         rating: 5,
         text: "I have witnessed remarkable improvement in my child's academic performance. Beyond that, he has grown more disciplined, motivated, and confident, taking initiative in his work without needing any reminders.",
+        image: "/assets/avatars/parent_raghuram.png"
     },
     {
         name: "Seema",
         rating: 5,
         text: "I am happy that we have such a wonderful school in Horamavu. It focuses not just on academics but also on extracurricular activities, most importantly staying rooted in our Indian values.",
+        image: "/assets/avatars/parent_seema.png"
     },
     {
         name: "Nandini",
         rating: 5,
         text: "I am confident that SLS International Gurukul was the right choice for my daughter. As working parents, we didn't always have the time to teach her about our traditions, and the school is filling that gap beautifully.",
+        image: "/assets/avatars/parent_nandini.png"
     },
     {
         name: "Prasad",
         rating: 5,
         text: "SLS International Gurukul is the school I always wished for my son with a balance between academics and extracurricular activities.",
+        image: "/assets/avatars/parent_prasad.png"
     },
 ];
 
@@ -130,7 +136,7 @@ export function Testimonials() {
                                     {/* Photo Placeholder */}
                                     <div className="w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-white/20 overflow-hidden shrink-0 group-hover:scale-105 transition-transform duration-500 shadow-xl">
                                         <img
-                                            src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${testimonials[currentIndex].name}`}
+                                            src={testimonials[currentIndex].image}
                                             alt={testimonials[currentIndex].name}
                                             className="w-full h-full object-cover bg-white/10"
                                         />
