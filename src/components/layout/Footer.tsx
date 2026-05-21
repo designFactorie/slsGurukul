@@ -11,6 +11,7 @@ const quickLinks = [
     { name: "Gallery", href: "/gallery" },
     { name: "Infrastructure", href: "/infrastructure" },
     { name: "Achievements", href: "/achievements" },
+    { name: "Mandatory Disclosures", href: "/mandatory-disclosures" },
 ];
 
 const contactInfo = [
