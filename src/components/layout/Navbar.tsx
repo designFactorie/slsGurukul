@@ -17,6 +17,7 @@ const menuItems = [
     { name: "Admissions", href: "/admissions" },
     { name: "Gallery", href: "/gallery" },
     { name: "Achievements", href: "/achievements" },
+    { name: "Mandatory Disclosures", href: "/mandatory-disclosures" },
 ];
 
 export function Navbar() {

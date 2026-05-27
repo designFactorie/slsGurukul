@@ -27,7 +27,7 @@ const documents = [
     { name: "Copy of No Objection Certificate (NOC) Issued by The State Govt./UT", href: "/documents/noc.pdf" },
     { name: "Copy of Recognition Certificate", href: "/documents/recognition-certificate.pdf" },
     { name: "Copy of Valid Building Safety Certificate As Per The National Building Code", href: "/documents/building-safety.pdf" },
-    { name: "Copy of Valid Fire Safety Certificate Issued by The Competent Authority", href: "/documents/fire-safety.pdf" },
+    { name: "Copy of Valid Fire Safety Certificate Issued by The Competent Authority", href: "/documents/Fire CC 24 - 26.pdf" },
     { name: "Copies of Valid Water, Health and Sanitation Certificates", href: "/documents/health-sanitation.pdf" },
     { name: "Copies of Land Certificates", href: "/documents/land-certificates.pdf" },
 ];
